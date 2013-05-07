@@ -1,0 +1,20 @@
+{
+  "name": "cycle",
+  "repo": "yields/cycle",
+  "description": "Modern select box.",
+  "version": "0.0.1",
+  "keywords": ["cycle", "select"],
+  "dependencies": {
+    "component/emitter": "*",
+    "component/events": "*",
+    "component/classes": "*"
+  },
+  "development": {
+    "yields/k": "*"  
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ]
+}

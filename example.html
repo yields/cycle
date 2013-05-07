@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Cycle</title>
+    <script src='build/build.js'></script>
+    <style>
+      body {
+        padding: 80px;
+        font-weight: 200;
+        font-family: 'Helvetica Neue';
+      }
+
+      p {
+        color: #666;
+      }
+
+      h2 {
+        font-weight: inherit;
+      }
+
+      .cycle {
+        width: 150px;
+        overflow: hidden;
+        position: relative;
+        text-align: center;
+        -webkit-user-select: none;
+      }
+
+      .cycle ul {
+        top: 0px;
+        position: relative;
+        list-style: none;
+        transition: top .2s ease;
+      }
+
+      .cycle li {
+        cursor: pointer;
+        transition: opacity .5s ease;
+        padding: 4px 0;
+        opacity: .3;
+      }
+
+      .cycle li:hover {
+        opacity: .5;
+      }
+
+      .cycle .selected {
+        opacity: 1;
+        cursor: default;
+      }
+
+      .cycle::before {
+        position: absolute;
+        right: 0;
+        left: 40px;
+        top: 38px;
+        content: '\0';
+        padding: 4px 0;
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        display: block;
+        background: #fff;
+      }
+
+      .cycle .cycle-focus {
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        height: 24px;
+        left: 40px;
+        top: 40px;
+        display: block;
+      }
+
+      .cycle .selected:hover {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h2>Choose a language</h2>
+    <p>Use you're mousewheel, keyboard up down, or just click.</p>
+
+    <div class='cycle'>
+      <ul>
+        <li data-id='1'>Google Go</li>
+        <li data-id='2' class='selected'>Javascript</li>
+        <li data-id='3'>Lua</li>
+        <li data-id='4'>Julia</li>
+        <li data-id='5'>Erlang</li>
+        <li data-id='6'>C</li>
+        <li data-id='7'>Other</li>
+      </ul>
+    </div>
+
+    <script>
+      var el = document.querySelector('ul')
+        , k = require('k')(window)
+        , Cycle = require('cycle')
+        , cycle = new Cycle(el);
+
+      // on select
+      cycle.on('select', function(el){
+        var id = el.getAttribute('data-id');
+        var name = el.innerText;
+        console.log('you have selected %s: %s', id, name);
+      });
+
+
+      // map shortcuts
+      k('down', cycle.down.bind(cycle));
+      k('up', cycle.up.bind(cycle));
+
+    </script>
+  </body>
+</html>
