@@ -1,9 +1,11 @@
 
 # cycle
 
-  modern select box, _beta_.
+  modern select box, [demo](http://yields.github.io/cycle/index.html).
 
   [![cycle](http://f.cl.ly/items/1Z082W2k3o1t3O15311h/Screen%20Shot%202013-05-07%20at%209.51.09%20PM.png)](http://yields.github.io/cycle/index.html)
+
+  _beta_.
 
 ## Installation
 
