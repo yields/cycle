@@ -5,7 +5,8 @@
 
 var emitter = require('emitter')
   , classes = require('classes')
-  , events = require('events');
+  , events = require('events')
+  , indexof = require('indexof');
 
 /**
  * export `Cycle`.
@@ -140,23 +141,7 @@ Cycle.prototype.onclick = function(e){
 
 Cycle.prototype.onmousewheel = function(e){
   e.preventDefault();
-  console.log(e.wheelDelta);
   return 0 > e.wheelDelta
     ? this.down()
     : this.up();
 };
-
-/**
- * indexof.
- * 
- * TODO: as component.
- * 
- * @param {Element} el
- * @return {Number}
- */
-
-function indexof(el){
-  if (!el.parentNode) return -1;
-  var els = el.parentNode.children;
-  return [].indexOf.call(els, el);
-}
